@@ -1,0 +1,23 @@
+<div
+  class="card"
+  *ngFor="let pokemon of pokemonList; let i = index"
+  [style.animationDelay]="i * 0.1 + 's'"
+  (click)="onPokemonClick(pokemon)"
+>
+  <div class="id">
+    #<span>{{ getFormattedId(pokemon.id) }}</span>
+  </div>
+  <div class="pokemon-img">
+    <img
+      [src]="pokemon.sprites.other?.home?.front_default"
+      [alt]="pokemon.name"
+    />
+  </div>
+  <span class="name">{{ pokemon.name }}</span>
+  <div class="types">
+    <div class="type" *ngFor="let type of pokemon.types">
+      <span class="icon" [innerHTML]="typeIcon(type.type.name)"></span>
+      <span class="type-name">{{ type.type.name }}</span>
+    </div>
+  </div>
+</div>

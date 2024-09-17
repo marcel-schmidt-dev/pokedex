@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --background: #000;
+    --primary: 0, 255, 255;
+    --secondary: #fff;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--secondary);
+    font-family: Orbitron-Regular;
+}
+
+@font-face {
+    font-family: Orbitron-Black;
+    src: url('./assets/fonts/Orbitron-Black.ttf');
+}
+
+@font-face {
+    font-family: Orbitron-Bold;
+    src: url('./assets/fonts/Orbitron-Bold.ttf');
+}
+
+@font-face {
+    font-family: Orbitron-ExtraBold;
+    src: url('./assets/fonts/Orbitron-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: Orbitron-Medium;
+    src: url('./assets/fonts/Orbitron-Medium.ttf');
+}
+
+@font-face {
+    font-family: Orbitron-Regular;
+    src: url('./assets/fonts/Orbitron-Regular.ttf');
+}
+
+@font-face {
+    font-family: Orbitron-SemiBold;
+    src: url('./assets/fonts/Orbitron-SemiBold.ttf');
+}

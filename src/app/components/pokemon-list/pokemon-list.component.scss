@@ -1,0 +1,200 @@
+.card {
+    flex-basis: calc(16% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: black;
+    transition: all ease-in-out;
+    opacity: 0;
+    border: 2px solid rgba(var(--primary), 0.7);
+    box-shadow: 0 0 10px rgba(var(--primary), 0.8), 0 0 20px rgba(var(--primary), 0.3);
+    animation: fadeIn 0.5s ease forwards;
+    overflow: hidden;
+    height: calc(50% - 10px);
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(var(--primary), 1), 0 0 30px rgba(var(--primary), 0.5);
+
+        .pokemon-img img {
+            animation: glitch 0.5s infinite;
+
+            @keyframes glitch {
+                0% {
+                    transform: scale(1);
+                    filter: grayscale(1) blur(1px);
+                }
+
+                20% {
+                    transform: scale(1.01) translateX(1px);
+                    filter: grayscale(1) blur(1px);
+                }
+
+                40% {
+                    transform: scale(0.99) translateX(-1px);
+                    filter: grayscale(1) blur(1px) blur(2px);
+                }
+
+                60% {
+                    transform: scale(1.01) translateY(1px);
+                    filter: grayscale(1) blur(1px);
+                }
+
+                80% {
+                    transform: scale(1) translateY(-1px);
+                    filter: grayscale(1) blur(1px);
+                }
+
+                100% {
+                    transform: scale(1);
+                    filter: grayscale(1) blur(1px);
+                }
+            }
+        }
+    }
+
+    .id {
+        font-size: 32px;
+        width: 100%;
+        text-align: right;
+
+        span {
+            color: rgba(var(--primary), 0.5)
+        }
+    }
+
+    >span {
+        margin: 0 auto;
+    }
+
+    .pokemon-img {
+        aspect-ratio: 1/1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        min-height: 1px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--primary), 0.75);
+            mix-blend-mode: color;
+            z-index: 2;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(to bottom,
+                    rgba(#000, 0.5),
+                    rgba(#000, 0.5) 1px,
+                    transparent 1px,
+                    transparent 3px);
+            pointer-events: none;
+            z-index: 3;
+            animation: moveLines 2s infinite linear;
+
+            @keyframes moveLines {
+                from {
+                    transform: translateY(0)
+                }
+
+                50% {
+                    transform: translateY(5px);
+                }
+
+                to {
+                    transform: translateY(0)
+                }
+            }
+        }
+
+        img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            filter: grayscale(1) blur(1px);
+            background-color: transparent;
+            animation: holoFlicker 3s infinite;
+
+            @keyframes holoFlicker {
+                0% {
+                    opacity: 0.95;
+                }
+
+                50% {
+                    opacity: 0.85;
+                }
+
+                100% {
+                    opacity: 0.95;
+                }
+            }
+        }
+    }
+
+    .name {
+        flex: 0;
+        position: relative;
+        z-index: 3;
+        color: white;
+        margin: 10px auto;
+        text-transform: uppercase;
+        font-size: 25px;
+    }
+
+    .types {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex: 0;
+
+        .type {
+            border: 2px solid rgb(var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .icon {
+            display: block;
+            max-width: 20px;
+            max-height: 20px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .type-name {
+            text-transform: capitalize;
+            font-size: 12px;
+        }
+    }
+}

@@ -1,0 +1,169 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title-wrapper {
+        display: flex;
+        gap: 10px;
+
+        .title {
+            text-transform: capitalize;
+            font-size: 64px;
+
+            span {
+                color: rgba(var(--primary), 0.5);
+
+            }
+        }
+
+        .close {
+            cursor: pointer;
+        }
+    }
+}
+
+.details-wrapper {
+    display: flex;
+    flex: 1;
+
+    .pokemon-img-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        min-height: 1px;
+        background-color: black;
+        width: 50%;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--primary), 0.75);
+            mix-blend-mode: color;
+            z-index: 2;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(to bottom,
+                    rgba(#000, 0.5),
+                    rgba(#000, 0.5) 1px,
+                    transparent 1px,
+                    transparent 3px);
+            pointer-events: none;
+            z-index: 3;
+            animation: moveLines 2s infinite linear;
+
+            @keyframes moveLines {
+                from {
+                    transform: translateY(0)
+                }
+
+                50% {
+                    transform: translateY(5px);
+                }
+
+                to {
+                    transform: translateY(0)
+                }
+            }
+        }
+
+        img {
+            position: relative;
+            z-index: 1;
+            filter: grayscale(1) blur(1px);
+            background-color: transparent;
+            animation: holoFlicker 3s infinite;
+            width: auto;
+            height: 100%;
+
+            @keyframes holoFlicker {
+                0% {
+                    opacity: 0.95;
+                }
+
+                50% {
+                    opacity: 0.85;
+                }
+
+                100% {
+                    opacity: 0.95;
+                }
+            }
+        }
+    }
+
+    .data-wrapper {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .main-data {
+            div {
+                font-size: 96px;
+            }
+
+            span {
+                color: rgb(var(--primary));
+            }
+        }
+
+        .data-box {
+            padding: 35px;
+            border-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(var(--primary)) 100%);
+            border-width: 5px;
+            border-style: solid;
+
+
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+
+                button {
+                    background-color: transparent;
+                    color: #fff;
+                    font-family: Orbitron-Regular;
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    padding: 10px 30px;
+                    position: relative;
+                    border: none;
+                    cursor: pointer;
+                    width: calc(25% - 15px);
+
+                    &:hover {
+                        color: #000;
+
+                        &::before {
+                            background-color: rgb(var(--primary));
+                        }
+                    }
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        border: 4px solid rgba(var(--primary), 0.75);
+                        transform: skew(-20deg);
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+    }
+}

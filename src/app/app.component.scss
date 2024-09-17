@@ -1,0 +1,106 @@
+.app {
+    background-color: var(--background);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .list {
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: stretch;
+        align-items: stretch;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        max-width: calc(100% - 100px);
+        max-height: calc(100% - 100px);
+        aspect-ratio: 16/9;
+    }
+
+    .loading-screen {
+        z-index: 10;
+    }
+
+    .pagination-controls {
+        z-index: 10;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(50%);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        span {
+            min-width: 100px;
+            text-align: center;
+        }
+
+        button {
+            background-color: transparent;
+            border: 2px solid rgb(var(--primary));
+            color: #fff;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+
+            &:not([disabled]):hover {
+                background-color: rgb(var(--primary));
+                color: #000;
+            }
+        }
+    }
+
+    .pokemon-detail {
+        padding: 20px;
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        max-width: calc(100% - 100px);
+        max-height: calc(100% - 100px);
+        aspect-ratio: 16/9;
+        border: 2px solid rgba(var(--primary), 0.7);
+        box-shadow: 0 0 10px rgba(var(--primary), 0.8), 0 0 20px rgba(var(--primary), 0.3);
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.stripes {
+    width: calc(100% - 100px);
+    height: calc(100vh - 100px);
+    border: 10px solid rgb(var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        background-color: var(--background);
+    }
+
+    &:before {
+        width: calc(100% + 20px);
+        height: calc(100% - 200px);
+    }
+
+    &:after {
+        width: calc(100% - 500px);
+        height: calc(100% + 20px);
+    }
+}

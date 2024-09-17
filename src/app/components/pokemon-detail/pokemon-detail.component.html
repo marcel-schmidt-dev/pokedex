@@ -1,0 +1,36 @@
+<div class="heading">
+  <div>play</div>
+  <div class="title-wrapper">
+    <div class="title">
+      {{ pokemon.name }} #<span>{{ getFormattedId(pokemon.id) }}</span>
+    </div>
+    <span class="close" (click)="onDetailClose()">X</span>
+  </div>
+</div>
+<div class="details-wrapper">
+  <div class="pokemon-img-wrapper">
+    <img
+      [src]="pokemon.sprites.other?.home?.front_default"
+      [alt]="pokemon.name"
+    />
+  </div>
+  <div class="data-wrapper">
+    <div class="main-data">
+      <div>
+        Height: <span>{{ pokemon.height }}</span>
+      </div>
+      <div>
+        Weight: <span>{{ pokemon.weight }}</span>
+      </div>
+    </div>
+    <div class="data-box">
+      <div class="content"></div>
+      <div class="menu">
+        <button>Stats</button>
+        <button>Location</button>
+        <button>Moves</button>
+        <button>Items</button>
+      </div>
+    </div>
+  </div>
+</div>
