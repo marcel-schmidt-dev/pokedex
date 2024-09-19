@@ -1,0 +1,38 @@
+.stats {
+    label {
+        text-transform: uppercase;
+        font-size: 32px;
+    }
+
+    span {
+        font-size: 32px;
+    }
+
+    td:nth-child(1) {
+        white-space: nowrap;
+    }
+
+    td:nth-child(2) {
+        width: 100%;
+        padding: 0 20px;
+
+        progress {
+            width: 100%;
+            background-color: transparent;
+            border-radius: 100vw;
+            overflow: hidden;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: transparent;
+            border-radius: 100vw;
+            overflow: hidden;
+        }
+
+        progress::-webkit-progress-value {
+            background-color: rgba(var(--primary));
+            border-radius: 100vw;
+            overflow: hidden;
+        }
+    }
+}

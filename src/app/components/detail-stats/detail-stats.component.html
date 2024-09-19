@@ -1,0 +1,19 @@
+<table class="stats">
+  <tr *ngFor="let stat of stats">
+    <td>
+      <label for="{{ stat.stat.name }}">{{ stat.stat.name }}</label>
+    </td>
+    <td>
+      <progress
+        id="{{ stat.stat.name }}"
+        max="{{ maxStat }}"
+        value="{{ stat.base_stat }}"
+      >
+        {{ stat.base_stat }}
+      </progress>
+    </td>
+    <td>
+      <span>{{ stat.base_stat }}</span>
+    </td>
+  </tr>
+</table>

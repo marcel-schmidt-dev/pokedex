@@ -2,9 +2,15 @@
   <div>play</div>
   <div class="title-wrapper">
     <div class="title">
-      {{ pokemon.name }} #<span>{{ getFormattedId(pokemon.id) }}</span>
+      {{ pokemon.name }} <span>#{{ getFormattedId(pokemon.id) }}</span>
+      <span class="close" (click)="onDetailClose()">X</span>
     </div>
-    <span class="close" (click)="onDetailClose()">X</span>
+    <div class="type-wrapper">
+      <div class="type" *ngFor="let type of pokemon.types">
+        <span class="icon" [innerHTML]="typeIcon(type.type.name)"></span>
+        <span class="type-name">{{ type.type.name }}</span>
+      </div>
+    </div>
   </div>
 </div>
 <div class="details-wrapper">
@@ -17,19 +23,50 @@
   <div class="data-wrapper">
     <div class="main-data">
       <div>
-        Height: <span>{{ pokemon.height }}</span>
+        Height: <span>{{ returnHeightInMeters(pokemon.height) }}</span>
       </div>
       <div>
-        Weight: <span>{{ pokemon.weight }}</span>
+        Weight: <span>{{ returnWeightInKg(pokemon.weight) }}</span>
       </div>
     </div>
-    <div class="data-box">
-      <div class="content"></div>
+    <div class="data-box" [class.active]="detailsActive !== ''">
+      <div
+        class="close-data-box"
+        (click)="onCloseClick()"
+        *ngIf="detailsActive !== ''"
+      >
+        X
+      </div>
+      <div class="content">
+        <div *ngIf="detailsActive === 'stats'">
+          <app-detail-stats [stats]="pokemon.stats"></app-detail-stats>
+        </div>
+      </div>
       <div class="menu">
-        <button>Stats</button>
-        <button>Location</button>
-        <button>Moves</button>
-        <button>Items</button>
+        <button
+          (click)="onDetailsButtonClick('stats')"
+          [class.active]="detailsActive === 'stats'"
+        >
+          Stats
+        </button>
+        <button
+          (click)="onDetailsButtonClick('location')"
+          [class.active]="detailsActive === 'location'"
+        >
+          Location
+        </button>
+        <button
+          (click)="onDetailsButtonClick('moves')"
+          [class.active]="detailsActive === 'moves'"
+        >
+          Moves
+        </button>
+        <button
+          (click)="onDetailsButtonClick('items')"
+          [class.active]="detailsActive === 'items'"
+        >
+          Items
+        </button>
       </div>
     </div>
   </div>
