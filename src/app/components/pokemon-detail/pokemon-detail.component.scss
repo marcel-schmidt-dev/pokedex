@@ -188,6 +188,34 @@
                 height: calc(100% - 20px);
             }
 
+            .close-data-box {
+                display: flex;
+                margin-left: auto;
+                width: 30px;
+                height: 0;
+                border: 0px solid rgb(var(--primary));
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 300ms ease-in-out;
+                animation: height 300ms forwards;
+                animation-delay: 300ms;
+                overflow: hidden;
+
+                &:hover {
+                    background-color: rgb(var(--primary));
+                    color: #000;
+                }
+
+                @keyframes height {
+                    to {
+                        height: 30px;
+                        border: 2px solid rgb(var(--primary));
+                    }
+                }
+            }
+
             .content {
                 flex: 1;
             }

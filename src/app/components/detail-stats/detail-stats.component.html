@@ -1,5 +1,8 @@
-<table class="stats">
-  <tr *ngFor="let stat of stats">
+<table class="stats" [class.active]="active">
+  <tr
+    *ngFor="let stat of stats; index as i"
+    [style.animationDelay]="i * 0.125 + 's'"
+  >
     <td>
       <label for="{{ stat.stat.name }}">{{ stat.stat.name }}</label>
     </td>

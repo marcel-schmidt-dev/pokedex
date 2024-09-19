@@ -11,4 +11,11 @@ import { Component, Input } from '@angular/core';
 export class DetailStatsComponent {
   @Input() stats: any;
   maxStat: number = 255;
+  active: boolean = false;
+
+  constructor() {
+    setTimeout(() => {
+      this.active = true;
+    }, 300);
+  }
 }

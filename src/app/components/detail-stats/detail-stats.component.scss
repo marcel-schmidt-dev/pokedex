@@ -1,4 +1,11 @@
 .stats {
+    display: none;
+    margin-top: 10px;
+
+    &.active {
+        display: block;
+    }
+
     label {
         text-transform: uppercase;
         font-size: 32px;
@@ -8,31 +15,50 @@
         font-size: 32px;
     }
 
-    td:nth-child(1) {
-        white-space: nowrap;
+    tr {
+        opacity: 0;
+        animation: fadeIn 1000ms ease-in-out forwards;
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
     }
 
-    td:nth-child(2) {
-        width: 100%;
-        padding: 0 20px;
+    td {
+        padding: 5px 10px;
 
-        progress {
+        &:nth-child(1) {
+            white-space: nowrap;
+            padding-left: 0;
+        }
+
+        &:nth-child(2) {
             width: 100%;
-            background-color: transparent;
-            border-radius: 100vw;
-            overflow: hidden;
+
+            progress {
+                width: 100%;
+                background-color: transparent;
+                border-radius: 100vw;
+                overflow: hidden;
+            }
+
+            progress::-webkit-progress-bar {
+                background-color: transparent;
+                border-radius: 100vw;
+                overflow: hidden;
+            }
+
+            progress::-webkit-progress-value {
+                background-color: rgba(var(--primary));
+                border-radius: 100vw;
+                overflow: hidden;
+            }
         }
 
-        progress::-webkit-progress-bar {
-            background-color: transparent;
-            border-radius: 100vw;
-            overflow: hidden;
-        }
-
-        progress::-webkit-progress-value {
-            background-color: rgba(var(--primary));
-            border-radius: 100vw;
-            overflow: hidden;
+        &:nth-child(3) {
+            padding-right: 0;
         }
     }
 }

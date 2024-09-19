@@ -38,9 +38,10 @@
         X
       </div>
       <div class="content">
-        <div *ngIf="detailsActive === 'stats'">
-          <app-detail-stats [stats]="pokemon.stats"></app-detail-stats>
-        </div>
+        <app-detail-stats
+          *ngIf="detailsActive === 'stats'"
+          [stats]="pokemon.stats"
+        ></app-detail-stats>
       </div>
       <div class="menu">
         <button
