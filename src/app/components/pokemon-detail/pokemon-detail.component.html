@@ -42,6 +42,10 @@
           *ngIf="detailsActive === 'stats'"
           [stats]="pokemon.stats"
         ></app-detail-stats>
+        <app-detail-description
+          *ngIf="detailsActive === 'description'"
+          [pokemon]="pokemon.name"
+        ></app-detail-description>
       </div>
       <div class="menu">
         <button
@@ -51,10 +55,10 @@
           Stats
         </button>
         <button
-          (click)="onDetailsButtonClick('location')"
-          [class.active]="detailsActive === 'location'"
+          (click)="onDetailsButtonClick('description')"
+          [class.active]="detailsActive === 'description'"
         >
-          Location
+          Description
         </button>
         <button
           (click)="onDetailsButtonClick('moves')"

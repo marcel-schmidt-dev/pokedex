@@ -10,6 +10,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DetailStatsComponent } from '../detail-stats/detail-stats.component';
 import { TypeIconService } from '../../services/type-icon.service';
 import { Pokemon } from '../../models/pokemon.model';
+import { DetailDescriptionComponent } from '../detail-description/detail-description.component';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -17,7 +18,7 @@ import { Pokemon } from '../../models/pokemon.model';
 @Component({
   selector: 'app-pokemon-detail',
   standalone: true,
-  imports: [CommonModule, DetailStatsComponent, DetailStatsComponent],
+  imports: [CommonModule, DetailStatsComponent, DetailDescriptionComponent],
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss'],
   encapsulation: ViewEncapsulation.None,

@@ -33,20 +33,32 @@ export class PokemonService {
     });
     const pokemonUrls = response.results.map((pokemon: any) => pokemon.url);
 
-    const pokemonList: Pokemon[] = [];
+    const pokemonList: Pokemon[] = await Promise.all(
+      pokemonUrls.map(async (url, index) => {
+        const pokemonResponse = await fetch(url);
+        const pokemonData = await pokemonResponse.json();
 
-    for (let i = 0; i < pokemonUrls.length; i++) {
-      const url = pokemonUrls[i];
-      const pokemonResponse = await fetch(url);
-      const pokemonData = await pokemonResponse.json();
-      pokemonList.push(pokemonData);
+        if (onProgress) {
+          const progress = Math.round(((index + 1) / pokemonUrls.length) * 100);
+          onProgress(progress);
+        }
 
-      if (onProgress) {
-        const progress = Math.round(((i + 1) / pokemonUrls.length) * 100);
-        onProgress(progress);
-      }
-    }
+        return pokemonData;
+      })
+    );
 
     return pokemonList;
+  }
+
+  async getPokemonLocations(name: string): Promise<any> {
+    const response = await this.pokeApi.getPokemonEncounterAreasByName(name);
+    const locations = response;
+    return locations;
+  }
+
+  async getPokemonSpecies(name: string): Promise<any> {
+    const response = await this.pokeApi.getPokemonSpeciesByName(name);
+    const species = response;
+    return species;
   }
 }
