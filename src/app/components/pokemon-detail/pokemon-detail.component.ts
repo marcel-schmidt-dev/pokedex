@@ -10,6 +10,7 @@ import { DetailStatsComponent } from '../detail-stats/detail-stats.component';
 import { Pokemon } from '../../models/pokemon.model';
 import { DetailDescriptionComponent } from '../detail-description/detail-description.component';
 import { TypeIconComponent } from '../type-icon/type-icon.component';
+import { PokemonService } from '../../services/pokemon.service';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -43,14 +44,7 @@ export class PokemonDetailComponent {
    */
   detailsActive: String = '';
 
-  /**
-   * Formats the given ID to a string with leading zeros to ensure it has at least 4 digits.
-   * @param id - The ID to be formatted.
-   * @returns A string representing the formatted ID.
-   */
-  getFormattedId(id: number): string {
-    return String(id).padStart(4, '0');
-  }
+  constructor(public pokemonService: PokemonService) {}
 
   /**
    * Sets the active details section based on the provided data type.

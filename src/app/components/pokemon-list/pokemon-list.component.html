@@ -5,7 +5,7 @@
   (click)="onPokemonClick(pokemon)"
 >
   <div class="id">
-    #<span>{{ getFormattedId(pokemon.id) }}</span>
+    #<span>{{ this.pokemonService.getFormattedId(pokemon.id) }}</span>
   </div>
   <div class="pokemon-img">
     <img

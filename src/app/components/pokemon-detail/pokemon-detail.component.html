@@ -2,7 +2,8 @@
   <div>play</div>
   <div class="title-wrapper">
     <div class="title">
-      {{ pokemon.name }} <span>#{{ getFormattedId(pokemon.id) }}</span>
+      {{ pokemon.name }}
+      <span>#{{ this.pokemonService.getFormattedId(pokemon.id) }}</span>
       <span class="close" (click)="onDetailClose()">X</span>
     </div>
     <div class="type-wrapper">

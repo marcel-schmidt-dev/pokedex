@@ -8,6 +8,7 @@ import {
 import { Pokemon } from '../../models/pokemon.model';
 import { CommonModule } from '@angular/common';
 import { TypeIconComponent } from '../type-icon/type-icon.component';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -21,12 +22,10 @@ export class PokemonListComponent {
   @Input() pokemonList?: Pokemon[];
   @Output() pokemonSelected = new EventEmitter<Pokemon>();
 
+  constructor(public pokemonService: PokemonService) {}
+
   ngOnInit(): void {
     console.log(this.pokemonList);
-  }
-
-  getFormattedId(id: number): string {
-    return String(id).padStart(4, '0');
   }
 
   onPokemonClick(pokemon: Pokemon): void {

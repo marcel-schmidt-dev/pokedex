@@ -61,4 +61,8 @@ export class PokemonService {
     const species = response;
     return species;
   }
+
+  getFormattedId(id: number): string {
+    return String(id).padStart(3, '0');
+  }
 }
