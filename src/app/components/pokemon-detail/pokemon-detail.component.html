@@ -7,7 +7,10 @@
     </div>
     <div class="type-wrapper">
       <div class="type" *ngFor="let type of pokemon.types">
-        <span class="icon" [innerHTML]="typeIcon(type.type.name)"></span>
+        <app-type-icon
+          [type]="type.type.name"
+          style="width: 16px"
+        ></app-type-icon>
         <span class="type-name">{{ type.type.name }}</span>
       </div>
     </div>
@@ -38,10 +41,7 @@
         X
       </div>
       <div class="content">
-        <app-detail-stats
-          *ngIf="detailsActive === 'stats'"
-          [stats]="pokemon.stats"
-        ></app-detail-stats>
+        <app-detail-stats *ngIf="detailsActive === 'stats'"></app-detail-stats>
         <app-detail-description
           *ngIf="detailsActive === 'description'"
           [pokemon]="pokemon.name"

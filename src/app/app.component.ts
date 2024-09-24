@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokemonService } from './services/pokemon.service';
 import { RouterOutlet } from '@angular/router';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
@@ -6,6 +6,7 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
 import { Pokemon } from './models/pokemon.model';
 import { CommonModule } from '@angular/common';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
+import { DetailStatsComponent } from './components/detail-stats/detail-stats.component';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,12 @@ import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-deta
     LoadingIndicatorComponent,
     CommonModule,
     PokemonDetailComponent,
+    DetailStatsComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   pokemonList!: Pokemon[];
   isLoading: boolean = true;
   progress: number = 0;

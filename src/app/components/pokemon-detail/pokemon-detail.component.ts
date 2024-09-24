@@ -6,11 +6,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DetailStatsComponent } from '../detail-stats/detail-stats.component';
-import { TypeIconService } from '../../services/type-icon.service';
 import { Pokemon } from '../../models/pokemon.model';
 import { DetailDescriptionComponent } from '../detail-description/detail-description.component';
+import { TypeIconComponent } from '../type-icon/type-icon.component';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -18,7 +17,12 @@ import { DetailDescriptionComponent } from '../detail-description/detail-descrip
 @Component({
   selector: 'app-pokemon-detail',
   standalone: true,
-  imports: [CommonModule, DetailStatsComponent, DetailDescriptionComponent],
+  imports: [
+    CommonModule,
+    DetailStatsComponent,
+    DetailDescriptionComponent,
+    TypeIconComponent,
+  ],
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -38,16 +42,6 @@ export class PokemonDetailComponent {
    * The currently active details section.
    */
   detailsActive: String = '';
-
-  /**
-   * Creates an instance of PokemonDetailComponent.
-   * @param typeIconService - Service to get type icons.
-   * @param sanitizer - Service to sanitize HTML content.
-   */
-  constructor(
-    private typeIconService: TypeIconService,
-    private sanitizer: DomSanitizer
-  ) {}
 
   /**
    * Formats the given ID to a string with leading zeros to ensure it has at least 4 digits.
@@ -78,16 +72,6 @@ export class PokemonDetailComponent {
    */
   onCloseClick() {
     this.detailsActive = '';
-  }
-
-  /**
-   * Returns a sanitized HTML string representing the type icon for the given type.
-   * @param type - The type of the Pokémon.
-   * @returns A SafeHtml object containing the sanitized HTML string.
-   */
-  typeIcon(type: string): SafeHtml {
-    const svg = this.typeIconService.getTypeIcon(type);
-    return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
   /**

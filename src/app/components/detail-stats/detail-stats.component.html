@@ -1,22 +1,4 @@
-<table class="stats" [class.active]="active">
-  <tr
-    *ngFor="let stat of stats; index as i"
-    [style.animationDelay]="i * 0.125 + 's'"
-  >
-    <td>
-      <label for="{{ stat.stat.name }}">{{ stat.stat.name }}</label>
-    </td>
-    <td>
-      <progress
-        id="{{ stat.stat.name }}"
-        max="{{ maxStat }}"
-        value="{{ stat.base_stat }}"
-      >
-        {{ stat.base_stat }}
-      </progress>
-    </td>
-    <td>
-      <span>{{ stat.base_stat }}</span>
-    </td>
-  </tr>
-</table>
+<span>Base Stats</span>
+<div class="chart-wrapper">
+  <canvas id="statChart">{{ chart }}</canvas>
+</div>
