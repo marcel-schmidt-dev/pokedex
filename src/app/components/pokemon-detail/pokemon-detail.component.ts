@@ -11,6 +11,7 @@ import { Pokemon } from '../../models/pokemon.model';
 import { DetailDescriptionComponent } from '../detail-description/detail-description.component';
 import { TypeIconComponent } from '../type-icon/type-icon.component';
 import { PokemonService } from '../../services/pokemon.service';
+import { DetailMovesComponent } from '../detail-moves/detail-moves.component';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -23,6 +24,7 @@ import { PokemonService } from '../../services/pokemon.service';
     DetailStatsComponent,
     DetailDescriptionComponent,
     TypeIconComponent,
+    DetailMovesComponent,
   ],
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss'],
@@ -84,5 +86,21 @@ export class PokemonDetailComponent {
    */
   returnWeightInKg(weight: number): string {
     return weight / 10 + ' kg';
+  }
+
+  /**
+   * Returns all moves that the Pokémon can learn in the Red/Blue versions.
+   * @returns An array of move names.
+   */
+  /**
+   * Returns all move objects that the Pokémon can learn in the Red/Blue versions.
+   * @returns An array of move objects.
+   */
+  getRedBlueMoves(): any[] {
+    return this.pokemon.moves.filter((move) =>
+      move.version_group_details.some(
+        (detail) => detail.version_group.name === 'red-blue'
+      )
+    );
   }
 }

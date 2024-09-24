@@ -1,0 +1,42 @@
+<div class="moves">
+  <div class="controls">
+    <span>Learned by:</span
+    ><button
+      (click)="handleTabChange('level')"
+      [class.active]="activeTab === 'level'"
+    >
+      Level</button
+    ><button
+      (click)="handleTabChange('machine')"
+      [class.active]="activeTab === 'machine'"
+    >
+      Machine
+    </button>
+  </div>
+  <div class="list">
+    <table *ngIf="activeTab === 'level'" class="level">
+      <tr
+        *ngFor="let move of filteredMoves; let i = index"
+        [ngStyle]="{ 'animation-delay': i * 200 + 400 + 'ms' }"
+      >
+        <td>{{ move.move.name.replace("-", " ") }}</td>
+        <td>&#64;lvl</td>
+        <td>
+          {{
+            this.pokemonService.getFormattedId(
+              move.version_group_details[0].level_learned_at
+            )
+          }}
+        </td>
+      </tr>
+    </table>
+    <table *ngIf="activeTab === 'machine'" class="machine">
+      <tr
+        *ngFor="let move of filteredMoves; let i = index"
+        [ngStyle]="{ 'animation-delay': i * 200 + 400 + 'ms' }"
+      >
+        <td>{{ move.move.name.replace("-", " ") }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

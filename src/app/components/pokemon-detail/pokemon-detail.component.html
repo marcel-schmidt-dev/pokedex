@@ -50,6 +50,10 @@
           *ngIf="detailsActive === 'description'"
           [pokemon]="pokemon.name"
         ></app-detail-description>
+        <app-detail-moves
+          *ngIf="detailsActive === 'moves'"
+          [moves]="this.getRedBlueMoves()"
+        ></app-detail-moves>
       </div>
       <div class="menu">
         <button
