@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Chart, ChartType, scales } from 'chart.js/auto';
+import { Component, Input } from '@angular/core';
+import { Chart, ChartType } from 'chart.js/auto';
+import { Stat } from '../../models/pokemon.model';
 
 @Component({
   selector: 'app-detail-stats',
@@ -11,6 +12,7 @@ import { Chart, ChartType, scales } from 'chart.js/auto';
 })
 export class DetailStatsComponent {
   chart: Chart | undefined;
+  @Input() stats?: Stat[];
 
   ngOnInit(): void {
     if (this.chart === undefined) {
@@ -21,29 +23,70 @@ export class DetailStatsComponent {
   private initializeChart(): void {
     const ctx = document.getElementById('statChart') as HTMLCanvasElement;
     const data = {
-      labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
+      labels:
+        this.stats?.map((stat) => {
+          let label = stat.stat.name;
+          if (label === 'special-defense') {
+            label = 'sp. def';
+          } else if (label === 'special-attack') {
+            label = 'sp. atk';
+          } else if (label === 'attack') {
+            label = 'atk';
+          } else if (label === 'defense') {
+            label = 'def';
+          }
+          return label.toUpperCase();
+        }) || [],
       datasets: [
         {
-          label: 'Activities',
-          data: [20, 10, 4, 2],
-          borderColor: 'rgba(255, 255, 255, 1)',
-          backgroundColor: 'rgba(255, 255, 255, 0.5)',
+          data: this.stats?.map((stat) => stat.base_stat) || [],
         },
       ],
     };
+
+    const maxStatValue = Math.max(
+      ...(this.stats?.map((stat) => stat.base_stat) || [])
+    );
 
     const config = {
       type: 'radar' as ChartType,
       data: data,
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            ticks: { display: false },
+            grid: {
+              color: 'rgba(0, 255, 255, 0.5)',
+              lineWidth: 2,
+            },
+            suggestedMin: 0,
+            suggestedMax: maxStatValue,
+            pointLabels: {
+              font: {
+                size: 20,
+                family: 'Orbitron-Regular',
+              },
+              color: 'rgba(255, 255, 255, 1)',
+            },
+          },
+        },
         elements: {
           line: {
-            borderWidth: 2,
+            borderWidth: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
           },
         },
       },
     };
-
-    this.chart = new Chart(ctx, config);
+    setTimeout(() => {
+      this.chart = new Chart(ctx, config);
+    }, 300);
   }
 }
