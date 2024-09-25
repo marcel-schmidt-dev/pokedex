@@ -54,10 +54,6 @@
           *ngIf="detailsActive === 'moves'"
           [moves]="this.getRedBlueMoves()"
         ></app-detail-moves>
-        <app-detail-included
-          *ngIf="detailsActive === 'included'"
-          [includes]="pokemon.game_indices"
-        ></app-detail-included>
       </div>
       <div class="menu">
         <button

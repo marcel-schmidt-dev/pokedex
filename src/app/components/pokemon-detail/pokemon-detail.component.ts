@@ -12,7 +12,6 @@ import { DetailDescriptionComponent } from '../detail-description/detail-descrip
 import { TypeIconComponent } from '../type-icon/type-icon.component';
 import { PokemonService } from '../../services/pokemon.service';
 import { DetailMovesComponent } from '../detail-moves/detail-moves.component';
-import { DetailIncludedComponent } from '../detail-included/detail-included.component';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -26,7 +25,6 @@ import { DetailIncludedComponent } from '../detail-included/detail-included.comp
     DetailDescriptionComponent,
     TypeIconComponent,
     DetailMovesComponent,
-    DetailIncludedComponent,
   ],
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss'],
