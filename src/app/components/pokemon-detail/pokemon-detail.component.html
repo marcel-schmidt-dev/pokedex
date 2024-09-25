@@ -54,6 +54,10 @@
           *ngIf="detailsActive === 'moves'"
           [moves]="this.getRedBlueMoves()"
         ></app-detail-moves>
+        <app-detail-evolution
+          *ngIf="detailsActive === 'evolution'"
+          [pokemonId]="pokemon.id"
+        ></app-detail-evolution>
       </div>
       <div class="menu">
         <button

@@ -56,13 +56,17 @@ export class PokemonService {
     return locations;
   }
 
-  async getPokemonSpecies(name: string): Promise<any> {
-    const response = await this.pokeApi.getPokemonSpeciesByName(name);
+  async getPokemonSpecies(id: number): Promise<any> {
+    const response = await this.pokeApi.getPokemonSpeciesByName(id);
     const species = response;
     return species;
   }
 
   getFormattedId(id: number): string {
     return String(id).padStart(3, '0');
+  }
+
+  getEvolutionChain(id: number): Promise<any> {
+    return this.pokeApi.getEvolutionChainById(id);
   }
 }
