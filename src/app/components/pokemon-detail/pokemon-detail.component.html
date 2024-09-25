@@ -54,6 +54,10 @@
           *ngIf="detailsActive === 'moves'"
           [moves]="this.getRedBlueMoves()"
         ></app-detail-moves>
+        <app-detail-included
+          *ngIf="detailsActive === 'included'"
+          [includes]="pokemon.game_indices"
+        ></app-detail-included>
       </div>
       <div class="menu">
         <button
@@ -75,10 +79,10 @@
           Moves
         </button>
         <button
-          (click)="onDetailsButtonClick('items')"
-          [class.active]="detailsActive === 'items'"
+          (click)="onDetailsButtonClick('included')"
+          [class.active]="detailsActive === 'included'"
         >
-          Items
+          Games
         </button>
       </div>
     </div>
