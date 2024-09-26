@@ -18,7 +18,7 @@
     <div class="type" *ngFor="let type of pokemon.types">
       <app-type-icon
         [type]="type.type.name"
-        style="width: 16px"
+        style="height: 16px; width: 16px; object-fit: contain"
       ></app-type-icon>
       <span class="type-name">{{ type.type.name }}</span>
     </div>

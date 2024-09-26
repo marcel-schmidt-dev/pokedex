@@ -56,8 +56,8 @@ export class PokemonService {
     return locations;
   }
 
-  async getPokemonSpecies(id: number): Promise<any> {
-    const response = await this.pokeApi.getPokemonSpeciesByName(id);
+  async getPokemonSpecies(name: string): Promise<any> {
+    const response = await this.pokeApi.getPokemonSpeciesByName(name);
     const species = response;
     return species;
   }
@@ -66,7 +66,8 @@ export class PokemonService {
     return String(id).padStart(3, '0');
   }
 
-  getEvolutionChain(id: number): Promise<any> {
-    return this.pokeApi.getEvolutionChainById(id);
+  async getEvolutionChain(id: number): Promise<any> {
+    const response = await this.pokeApi.getEvolutionChainById(id);
+    return response;
   }
 }
