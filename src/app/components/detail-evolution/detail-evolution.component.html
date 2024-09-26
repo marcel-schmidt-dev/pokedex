@@ -1,1 +1,16 @@
-<p>detail-evolution works!</p>
+<div class="evolutions">
+  <div class="evolution-chain">
+    <div *ngFor="let evolution of evolutions" class="evolution">
+      <div class="pokemon-img-wrapper">
+        <img [src]="evolution.sprite" alt="{{ evolution.name }}" />
+      </div>
+      <span class="name">{{ evolution.name }}</span>
+      <span class="level" *ngIf="evolution.level_to_evolve">
+        <span>&#64;lvl</span> {{ evolution.level_to_evolve }}
+      </span>
+      <span class="stone" *ngIf="evolution.stone"
+        >Stone: {{ evolution.stone }}</span
+      >
+    </div>
+  </div>
+</div>
