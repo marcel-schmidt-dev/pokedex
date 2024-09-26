@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
 })
 export class DetailEvolutionComponent {
   @Input() pokemonName!: string;
-  @Output() hasMultipleEvolutions = new EventEmitter<boolean>();
   evolutionChain: any;
   species: any;
   evolutions: {
@@ -32,13 +31,9 @@ export class DetailEvolutionComponent {
       this.species.evolution_chain.url.split('/')[6]
     );
 
-    this.evolutions = this.getEvolutions();
-
-    if (this.evolutions.length > 1) {
-      this.hasMultipleEvolutions.emit(true);
-    }
-
-    console.log(this.evolutions);
+    setTimeout(() => {
+      this.evolutions = this.getEvolutions();
+    }, 300);
   }
 
   getEvolutions() {
