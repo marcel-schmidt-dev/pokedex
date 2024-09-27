@@ -17,6 +17,7 @@
       class="pokemon-detail"
       *ngIf="selectedPokemon"
       [pokemon]="selectedPokemon"
+      [pokemonList]="pokemonList"
       (closeDetail)="closeDetailView()"
     ></app-pokemon-detail>
   </div>

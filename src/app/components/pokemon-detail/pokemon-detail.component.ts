@@ -12,7 +12,7 @@ import { TypeIconComponent } from '../type-icon/type-icon.component';
 import { PokemonService } from '../../services/pokemon.service';
 import { DetailMovesComponent } from '../detail-moves/detail-moves.component';
 import { DetailEvolutionComponent } from '../detail-evolution/detail-evolution.component';
-import { Move, Pokemon } from 'pokeapi-js-wrapper';
+import { Pokemon } from 'pokeapi-js-wrapper';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -37,6 +37,7 @@ export class PokemonDetailComponent {
    * The Pokémon to display details for.
    */
   @Input() pokemon!: Pokemon;
+  @Input() pokemonList!: Pokemon[];
 
   /**
    * Event emitted when the detail view is closed.
@@ -47,6 +48,8 @@ export class PokemonDetailComponent {
    * The currently active details section.
    */
   detailsActive: String = '';
+
+  currentIndex: number = 0;
 
   constructor(public pokemonService: PokemonService) {}
 
@@ -104,5 +107,17 @@ export class PokemonDetailComponent {
         (detail: any) => detail.version_group.name === 'red-blue'
       )
     );
+  }
+
+  changePokemon(direction: string): void {
+    this.currentIndex = this.pokemonList.indexOf(this.pokemon);
+    if (direction === 'previous' && this.currentIndex > 0) {
+      this.pokemon = this.pokemonList[this.currentIndex - 1];
+    } else if (
+      direction === 'next' &&
+      this.currentIndex < this.pokemonList.length - 1
+    ) {
+      this.pokemon = this.pokemonList[this.currentIndex + 1];
+    }
   }
 }
