@@ -6,7 +6,6 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
 import { CommonModule } from '@angular/common';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { DetailStatsComponent } from './components/detail-stats/detail-stats.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { Pokemon } from 'pokeapi-js-wrapper';
 
 @Component({
@@ -19,7 +18,6 @@ import { Pokemon } from 'pokeapi-js-wrapper';
     CommonModule,
     PokemonDetailComponent,
     DetailStatsComponent,
-    SearchBarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -29,9 +27,6 @@ export class AppComponent {
   filteredPokemonList!: Pokemon[];
   isLoading: boolean = true;
   progress: number = 0;
-  totalPokemon: number = 151;
-  pokemonPerPage: number = 12;
-  currentPage: number = 1;
   selectedPokemon!: Pokemon | null;
   searchTerm: string = '';
 
@@ -43,11 +38,11 @@ export class AppComponent {
 
     this.pokemonService
       .getPokemonList(151, (progress: number) => {
-        this.progress = parseInt(progress.toFixed(0)) + 1;
+        this.progress = parseInt(progress.toFixed(0));
       })
       .then((response: Pokemon[]) => {
-        this.pokemonList = response;
-        this.filteredPokemonList = response;
+        this.pokemonList = response.sort((a, b) => a.id - b.id);
+        this.filteredPokemonList = this.pokemonList;
         this.isLoading = false;
       })
       .catch((error) => {
@@ -66,12 +61,5 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.loadPokemonList();
-  }
-
-  onSearch(searchTerm: string) {
-    this.searchTerm = searchTerm;
-    this.filteredPokemonList = this.pokemonList.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
   }
 }

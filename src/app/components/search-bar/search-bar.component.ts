@@ -9,9 +9,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SearchBarComponent {
   @Output() search = new EventEmitter<string>();
+  isActive = false;
 
   onSearch(event: Event) {
     const input = event.target as HTMLInputElement;
     this.search.emit(input.value);
+  }
+
+  toggleActive() {
+    this.isActive = !this.isActive;
   }
 }

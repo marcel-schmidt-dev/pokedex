@@ -22,15 +22,21 @@ export class PokemonService {
     totalPokemon: number = 151,
     onProgress?: (progress: number) => void
   ): Promise<Pokemon[]> {
-    let pokemonList: Pokemon[] = [];
+    const pokemonList: Pokemon[] = [];
+    const promises = [];
 
     for (let i = 1; i <= totalPokemon; i++) {
-      const response = await this.pokeApi.getPokemonByName(i);
-      pokemonList.push(response);
-      if (onProgress) {
-        onProgress((i / totalPokemon) * 100);
-      }
+      promises.push(
+        this.pokeApi.getPokemonByName(i).then((response) => {
+          pokemonList.push(response);
+          if (onProgress) {
+            onProgress((pokemonList.length / totalPokemon) * 100);
+          }
+        })
+      );
     }
+
+    await Promise.all(promises);
     return pokemonList;
   }
 

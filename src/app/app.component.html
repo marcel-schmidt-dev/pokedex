@@ -4,8 +4,6 @@
       <app-loading-indicator [progress]="progress"></app-loading-indicator>
     </div>
 
-    <app-search-bar (search)="onSearch($event)"></app-search-bar>
-
     <app-pokemon-list
       *ngIf="!isLoading && !selectedPokemon"
       class="list"
