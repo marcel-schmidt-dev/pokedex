@@ -113,11 +113,13 @@ export class PokemonDetailComponent {
     this.currentIndex = this.pokemonList.indexOf(this.pokemon);
     if (direction === 'previous' && this.currentIndex > 0) {
       this.pokemon = this.pokemonList[this.currentIndex - 1];
+      this.currentIndex--;
     } else if (
       direction === 'next' &&
       this.currentIndex < this.pokemonList.length - 1
     ) {
       this.pokemon = this.pokemonList[this.currentIndex + 1];
+      this.currentIndex++;
     }
   }
 }
