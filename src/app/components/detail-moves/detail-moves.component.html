@@ -19,12 +19,12 @@
         *ngFor="let move of filteredMoves; let i = index"
         [ngStyle]="{ 'animation-delay': i * 200 + 400 + 'ms' }"
       >
-        <td>{{ move.move.name.replace("-", " ") }}</td>
+        <td>{{ move["move"].name.replace("-", " ") }}</td>
         <td>&#64;lvl</td>
         <td>
           {{
             this.pokemonService.getFormattedId(
-              move.version_group_details[0].level_learned_at
+              move["version_group_details"][0].level_learned_at
             )
           }}
         </td>
@@ -35,7 +35,7 @@
         *ngFor="let move of filteredMoves; let i = index"
         [ngStyle]="{ 'animation-delay': i * 200 + 400 + 'ms' }"
       >
-        <td>{{ move.move.name.replace("-", " ") }}</td>
+        <td>{{ move["move"].name.replace("-", " ") }}</td>
       </tr>
     </table>
   </div>

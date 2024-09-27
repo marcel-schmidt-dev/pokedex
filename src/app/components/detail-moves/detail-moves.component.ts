@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Move } from '../../models/pokemon.model';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from '../../services/pokemon.service';
+import { Move } from 'pokeapi-js-wrapper';
 
 @Component({
   selector: 'app-detail-moves',
@@ -32,14 +32,15 @@ export class DetailMovesComponent {
   }
 
   private isMoveLearnedByLevelUp(move: Move): boolean {
-    return move.version_group_details.some(
-      (detail) => detail.move_learn_method.name === 'level-up'
+    return move['version_group_details'].some(
+      (detail: { move_learn_method: { name: string } }) =>
+        detail.move_learn_method.name === 'level-up'
     );
   }
 
   private compareMovesByLevelLearnedAt(a: Move, b: Move): number {
-    const levelA = a.version_group_details[0]?.level_learned_at || 0;
-    const levelB = b.version_group_details[0]?.level_learned_at || 0;
+    const levelA = a['version_group_details'][0]?.level_learned_at || 0;
+    const levelB = b['version_group_details'][0]?.level_learned_at || 0;
 
     return levelA - levelB;
   }
@@ -52,8 +53,9 @@ export class DetailMovesComponent {
 
   returnMovesLearnedByMachine(moves: Move[]): Move[] {
     return moves.filter((move) =>
-      move.version_group_details.some(
-        (detail) => detail.move_learn_method.name === 'machine'
+      move['version_group_details'].some(
+        (detail: { move_learn_method: { name: string } }) =>
+          detail.move_learn_method.name === 'machine'
       )
     );
   }

@@ -4,15 +4,14 @@
       <app-loading-indicator [progress]="progress"></app-loading-indicator>
     </div>
 
-    <app-search-bar
-      (search)="onSearch($event)"
-      [searchTerm]="searchTerm"
-    ></app-search-bar>
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
 
     <app-pokemon-list
       *ngIf="!isLoading && !selectedPokemon"
       class="list"
-      [pokemonList]="pokemonList"
+      [pokemonList]="filteredPokemonList"
+      [selectedPokemon]="selectedPokemon"
+      [isLoading]="isLoading"
       (pokemonSelected)="onPokemonSelected($event)"
     ></app-pokemon-list>
 
@@ -22,21 +21,5 @@
       [pokemon]="selectedPokemon"
       (closeDetail)="closeDetailView()"
     ></app-pokemon-detail>
-
-    <div class="pagination-controls" *ngIf="!selectedPokemon && !isLoading">
-      <button
-        (click)="changePage(currentPage - 1)"
-        [disabled]="currentPage === 1"
-      >
-        <
-      </button>
-      <span>{{ currentPage }} / {{ totalPages }}</span>
-      <button
-        (click)="changePage(currentPage + 1)"
-        [disabled]="currentPage === totalPages"
-      >
-        >
-      </button>
-    </div>
   </div>
 </div>

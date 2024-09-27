@@ -1,5 +1,4 @@
 .card {
-    flex-basis: calc(16% - 10px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -14,6 +13,8 @@
     animation: fadeIn 0.5s ease forwards;
     overflow: hidden;
     height: calc(50% - 10px);
+    flex: 1 1 calc(20% - 20px);
+    max-width: calc(16.66% - 20px);
 
     @keyframes fadeIn {
         from {
@@ -195,6 +196,42 @@
         .type-name {
             text-transform: capitalize;
             font-size: 12px;
+        }
+    }
+}
+
+.pagination-controls {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    span {
+        min-width: 100px;
+        text-align: center;
+    }
+
+    button {
+        background-color: transparent;
+        border: 2px solid rgb(var(--primary));
+        color: #fff;
+        font-size: 20px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+
+        &:not([disabled]):hover {
+            background-color: rgb(var(--primary));
+            color: #000;
         }
     }
 }

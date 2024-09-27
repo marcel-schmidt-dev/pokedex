@@ -7,12 +7,12 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailStatsComponent } from '../detail-stats/detail-stats.component';
-import { Pokemon } from '../../models/pokemon.model';
 import { DetailDescriptionComponent } from '../detail-description/detail-description.component';
 import { TypeIconComponent } from '../type-icon/type-icon.component';
 import { PokemonService } from '../../services/pokemon.service';
 import { DetailMovesComponent } from '../detail-moves/detail-moves.component';
 import { DetailEvolutionComponent } from '../detail-evolution/detail-evolution.component';
+import { Move, Pokemon } from 'pokeapi-js-wrapper';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -99,9 +99,9 @@ export class PokemonDetailComponent {
    * @returns An array of move objects.
    */
   getRedBlueMoves(): any[] {
-    return this.pokemon.moves.filter((move) =>
-      move.version_group_details.some(
-        (detail) => detail.version_group.name === 'red-blue'
+    return this.pokemon.moves.filter((move: { version_group_details: any[] }) =>
+      move['version_group_details'].some(
+        (detail: any) => detail.version_group.name === 'red-blue'
       )
     );
   }

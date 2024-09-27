@@ -3,10 +3,11 @@ import { PokemonService } from './services/pokemon.service';
 import { RouterOutlet } from '@angular/router';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
-import { Pokemon } from './models/pokemon.model';
 import { CommonModule } from '@angular/common';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { DetailStatsComponent } from './components/detail-stats/detail-stats.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { Pokemon } from 'pokeapi-js-wrapper';
 
 @Component({
   selector: 'app-root',
@@ -18,51 +19,41 @@ import { DetailStatsComponent } from './components/detail-stats/detail-stats.com
     CommonModule,
     PokemonDetailComponent,
     DetailStatsComponent,
+    SearchBarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   pokemonList!: Pokemon[];
+  filteredPokemonList!: Pokemon[];
   isLoading: boolean = true;
   progress: number = 0;
   totalPokemon: number = 151;
   pokemonPerPage: number = 12;
   currentPage: number = 1;
-  totalPages: number = 0;
   selectedPokemon!: Pokemon | null;
+  searchTerm: string = '';
 
   constructor(private pokemonService: PokemonService) {}
 
-  loadPokemonPage(page: number): void {
-    const offset = (page - 1) * this.pokemonPerPage;
+  loadPokemonList(): void {
     this.isLoading = true;
     this.progress = 0;
 
     this.pokemonService
-      .getPokemonList(
-        this.pokemonPerPage,
-        offset,
-        this.totalPokemon,
-        (progress) => {
-          this.progress = progress;
-        }
-      )
+      .getPokemonList(151, (progress: number) => {
+        this.progress = parseInt(progress.toFixed(0)) + 1;
+      })
       .then((response: Pokemon[]) => {
         this.pokemonList = response;
+        this.filteredPokemonList = response;
         this.isLoading = false;
       })
       .catch((error) => {
-        console.error('Error loading Pokémon list', error);
+        console.error('Error fetching Pokémon list:', error);
         this.isLoading = false;
       });
-  }
-
-  changePage(page: number): void {
-    if (page > 0 && page <= this.totalPages) {
-      this.currentPage = page;
-      this.loadPokemonPage(page);
-    }
   }
 
   onPokemonSelected(pokemon: Pokemon): void {
@@ -74,7 +65,13 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.totalPages = Math.ceil(this.totalPokemon / this.pokemonPerPage);
-    this.loadPokemonPage(this.currentPage);
+    this.loadPokemonList();
+  }
+
+  onSearch(searchTerm: string) {
+    this.searchTerm = searchTerm;
+    this.filteredPokemonList = this.pokemonList.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Chart, ChartType } from 'chart.js/auto';
-import { Stat } from '../../models/pokemon.model';
+import { Stat, StatElement } from 'pokeapi-js-wrapper';
 
 @Component({
   selector: 'app-detail-stats',
@@ -12,7 +12,7 @@ import { Stat } from '../../models/pokemon.model';
 })
 export class DetailStatsComponent {
   chart: Chart | undefined;
-  @Input() stats?: Stat[];
+  @Input() stats?: StatElement[];
 
   ngOnInit(): void {
     if (this.chart === undefined) {
@@ -25,7 +25,7 @@ export class DetailStatsComponent {
     const data = {
       labels:
         this.stats?.map((stat) => {
-          let label = stat.stat.name;
+          let label = stat['name'];
           if (label === 'special-defense') {
             label = 'sp. def';
           } else if (label === 'special-attack') {
@@ -39,13 +39,13 @@ export class DetailStatsComponent {
         }) || [],
       datasets: [
         {
-          data: this.stats?.map((stat) => stat.base_stat) || [],
+          data: this.stats?.map((stat) => stat['base_stat']) || [],
         },
       ],
     };
 
     const maxStatValue = Math.max(
-      ...(this.stats?.map((stat) => stat.base_stat) || [])
+      ...(this.stats?.map((stat) => stat['base_stat']) || [])
     );
 
     const config = {

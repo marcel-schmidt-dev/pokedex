@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokedex } from 'pokeapi-js-wrapper';
-import { Pokemon } from '../models/pokemon.model';
+import { Pokedex, Pokemon } from 'pokeapi-js-wrapper';
 
 @Injectable({
   providedIn: 'root',
@@ -20,39 +19,26 @@ export class PokemonService {
   }
 
   async getPokemonList(
-    limit: number,
-    offset: number,
-    totalPokemon: number,
+    totalPokemon: number = 151,
     onProgress?: (progress: number) => void
   ): Promise<Pokemon[]> {
-    const adjustedLimit = Math.min(limit, totalPokemon - offset);
+    let pokemonList: Pokemon[] = [];
 
-    const response = await this.pokeApi.getPokemonsList({
-      limit: adjustedLimit,
-      offset: offset,
-    });
-    const pokemonUrls = response.results.map((pokemon: any) => pokemon.url);
-
-    const pokemonList: Pokemon[] = await Promise.all(
-      pokemonUrls.map(async (url, index) => {
-        const pokemonResponse = await fetch(url);
-        const pokemonData = await pokemonResponse.json();
-
-        if (onProgress) {
-          const progress = Math.round(((index + 1) / pokemonUrls.length) * 100);
-          onProgress(progress);
-        }
-
-        return pokemonData;
-      })
-    );
-
+    for (let i = 1; i <= totalPokemon; i++) {
+      const response = await this.pokeApi.getPokemonByName(i);
+      pokemonList.push(response);
+      if (onProgress) {
+        onProgress((i / totalPokemon) * 100);
+      }
+    }
     return pokemonList;
   }
 
   async getPokemonLocations(name: string): Promise<any> {
-    const response = await this.pokeApi.getPokemonEncounterAreasByName(name);
-    const locations = response;
+    const response: any = await this.pokeApi.getPokemonEncounterAreasByName(
+      name
+    );
+    const locations: any = response;
     return locations;
   }
 

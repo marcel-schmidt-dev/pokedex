@@ -1,6 +1,6 @@
 <div
   class="card"
-  *ngFor="let pokemon of pokemonList; let i = index"
+  *ngFor="let pokemon of paginatedPokemonList; let i = index"
   [style.animationDelay]="i * 0.1 + 's'"
   (click)="onPokemonClick(pokemon)"
 >
@@ -9,7 +9,7 @@
   </div>
   <div class="pokemon-img">
     <img
-      [src]="pokemon.sprites.other?.home?.front_default"
+      [src]="pokemon.sprites.other.home.front_default"
       [alt]="pokemon.name"
     />
   </div>
@@ -23,4 +23,16 @@
       <span class="type-name">{{ type.type.name }}</span>
     </div>
   </div>
+</div>
+<div class="pagination-controls" *ngIf="!selectedPokemon && !isLoading">
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    <
+  </button>
+  <span>{{ currentPage }} / {{ totalPages }}</span>
+  <button
+    (click)="changePage(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    >
+  </button>
 </div>
