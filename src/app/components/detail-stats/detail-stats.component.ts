@@ -22,10 +22,12 @@ export class DetailStatsComponent {
 
   private initializeChart(): void {
     const ctx = document.getElementById('statChart') as HTMLCanvasElement;
+
     const data = {
       labels:
         this.stats?.map((stat) => {
-          let label = stat['name'];
+          let label = stat.stat['name'];
+
           if (label === 'special-defense') {
             label = 'sp. def';
           } else if (label === 'special-attack') {
