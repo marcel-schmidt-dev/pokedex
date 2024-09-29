@@ -7,5 +7,10 @@
       />
     </svg>
   </div>
-  <input type="text" (input)="onSearch($event)" placeholder="Search Pokémon" />
+  <input
+    *ngIf="isActive"
+    type="text"
+    (input)="onSearch($event)"
+    placeholder="Search Pokémon"
+  />
 </div>

@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.scss',
 })
@@ -18,5 +19,11 @@ export class SearchBarComponent {
 
   toggleActive() {
     this.isActive = !this.isActive;
+    if (this.isActive) {
+      const inputElement = document.querySelector('input') as HTMLInputElement;
+      if (inputElement) {
+        inputElement.focus();
+      }
+    }
   }
 }

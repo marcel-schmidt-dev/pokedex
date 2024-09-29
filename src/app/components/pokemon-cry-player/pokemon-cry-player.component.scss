@@ -11,13 +11,23 @@
     height: 50px;
     border-radius: 50%;
     background-color: transparent;
-    color: #fff;
     cursor: pointer;
     transition: all 300ms ease-in-out;
     border: 2px solid rgb(var(--primary));
+    font-size: 18px;
+
+    svg {
+        width: 40%;
+        height: 40%;
+        fill: #fff;
+        transition: all 300ms ease-in-out;
+    }
 
     &:hover {
         background-color: rgb(var(--primary));
-        color: #000;
+
+        svg {
+            fill: #000;
+        }
     }
 }
