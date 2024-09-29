@@ -27,6 +27,15 @@
             opacity: 1;
             width: 100%;
             padding: 0 20px;
+            overflow: hidden;
+        }
+
+        99% {
+            width: 100%;
+            opacity: 1;
+            height: 100%;
+            padding: 20px;
+            overflow: hidden;
         }
 
         100% {
@@ -34,6 +43,7 @@
             opacity: 1;
             height: 100%;
             padding: 20px;
+            overflow: visible;
         }
     }
 }
@@ -42,8 +52,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 
     .title-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         .title {
             text-transform: capitalize;
             font-size: 64px;
@@ -66,6 +82,7 @@
         gap: 10px;
         justify-content: flex-end;
         padding-top: 10px;
+        width: 100%;
 
         .type {
             display: inline-block;

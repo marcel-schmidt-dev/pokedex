@@ -13,6 +13,7 @@ import { PokemonService } from '../../services/pokemon.service';
 import { DetailMovesComponent } from '../detail-moves/detail-moves.component';
 import { DetailEvolutionComponent } from '../detail-evolution/detail-evolution.component';
 import { Pokemon } from 'pokeapi-js-wrapper';
+import { PokemonCryPlayerComponent } from '../pokemon-cry-player/pokemon-cry-player.component';
 
 /**
  * Component to display detailed information about a Pokémon.
@@ -27,6 +28,7 @@ import { Pokemon } from 'pokeapi-js-wrapper';
     TypeIconComponent,
     DetailMovesComponent,
     DetailEvolutionComponent,
+    PokemonCryPlayerComponent,
   ],
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss'],
