@@ -1,30 +1,30 @@
 <div class="app">
-  <div class="stripes">
-    <div *ngIf="isLoading" class="loading-screen">
-      <app-loading-indicator [progress]="progress"></app-loading-indicator>
-    </div>
+  <div class="stripes"></div>
+  <app-loading-indicator
+    *ngIf="isLoading"
+    [progress]="progress"
+  ></app-loading-indicator>
 
-    <app-pokemon-list
-      *ngIf="!isLoading && !selectedPokemon"
-      class="list"
-      [pokemonList]="filteredPokemonList"
-      [selectedPokemon]="selectedPokemon"
-      [isLoading]="isLoading"
-      (pokemonSelected)="onPokemonSelected($event)"
-    ></app-pokemon-list>
+  <app-pokemon-list
+    *ngIf="!isLoading && !selectedPokemon"
+    class="list"
+    [pokemonList]="filteredPokemonList"
+    [selectedPokemon]="selectedPokemon"
+    [isLoading]="isLoading"
+    (pokemonSelected)="onPokemonSelected($event)"
+  ></app-pokemon-list>
 
-    <app-pokemon-detail
-      style="
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-      *ngIf="selectedPokemon"
-      [pokemon]="selectedPokemon"
-      [pokemonList]="pokemonList"
-      (closeDetail)="closeDetailView()"
-    ></app-pokemon-detail>
-  </div>
+  <app-pokemon-detail
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% - 200px);
+      height: calc(100vh - 200px);
+    "
+    *ngIf="selectedPokemon"
+    [pokemon]="selectedPokemon"
+    [pokemonList]="pokemonList"
+    (closeDetail)="closeDetailView()"
+  ></app-pokemon-detail>
 </div>

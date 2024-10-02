@@ -124,4 +124,6 @@ export class PokemonDetailComponent {
       this.currentIndex++;
     }
   }
+
+  
 }

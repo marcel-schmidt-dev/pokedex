@@ -1,22 +1,51 @@
 .app {
     background-color: var(--background);
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .list {
         z-index: 10;
-        display: flex;
-        flex-wrap: wrap;
         gap: 24px;
         width: 100%;
-        height: 100%;
-        max-width: calc(100% - 100px);
-        max-height: calc(100% - 100px);
-        aspect-ratio: 16/9;
+        height: calc(100vh - 200px);
+        max-width: calc(100% - 200px);
+        max-height: calc(100vh - 200px);
         justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        position: relative;
+
+        @media (max-width: 1550px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width: 1300px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 1150px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 850px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (orientation: portrait) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            max-height: fit-content;
+            padding: 100px 0;
+        }
+
+        @media (max-width: 650px) {
+            max-width: calc(100% - 100px);
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 
     .loading-screen {
@@ -31,13 +60,21 @@
 
 .stripes {
     width: calc(100% - 100px);
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     border: 10px solid rgb(var(--primary));
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (orientation: portrait) {
+        display: none;
+    }
 
     &:before,
     &:after {
@@ -48,12 +85,14 @@
     }
 
     &:before {
-        width: calc(100% + 20px);
-        height: calc(100% - 200px);
+        width: calc(100% + 22px);
+        height: 100%;
+        max-height: 80%;
     }
 
     &:after {
-        width: calc(100% - 500px);
-        height: calc(100% + 20px);
+        width: 100%;
+        max-width: 75%;
+        height: calc(100% + 22px);
     }
 }

@@ -20,10 +20,14 @@ export class SearchBarComponent {
   toggleActive() {
     this.isActive = !this.isActive;
     if (this.isActive) {
-      const inputElement = document.querySelector('input') as HTMLInputElement;
-      if (inputElement) {
-        inputElement.focus();
-      }
+      setTimeout(() => {
+        const inputElement = document.querySelector(
+          'input'
+        ) as HTMLInputElement;
+        if (inputElement) {
+          inputElement.focus();
+        }
+      }, 10);
     }
   }
 }

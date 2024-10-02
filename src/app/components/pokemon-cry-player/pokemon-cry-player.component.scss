@@ -1,6 +1,10 @@
 .cry-player {
     display: flex;
     gap: 20px;
+
+    @media (max-width: 745px) {
+        display: none;
+    }
 }
 
 .play-button {

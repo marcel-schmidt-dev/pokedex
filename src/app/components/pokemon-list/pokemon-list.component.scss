@@ -12,9 +12,7 @@
     box-shadow: 0 0 10px rgba(var(--primary), 0.8), 0 0 20px rgba(var(--primary), 0.3);
     animation: fadeIn 0.5s ease forwards;
     overflow: hidden;
-    height: calc(50% - 10px);
-    flex: 1 1 calc(20% - 20px);
-    max-width: calc(16.66% - 20px);
+    width: 100%;
 
     @keyframes fadeIn {
         from {
@@ -30,38 +28,40 @@
         cursor: pointer;
         box-shadow: 0 0 15px rgba(var(--primary), 1), 0 0 30px rgba(var(--primary), 0.5);
 
-        .pokemon-img img {
-            animation: glitch 0.5s infinite;
+        .pokemon-img {
+            img {
+                animation: glitch 0.5s infinite;
 
-            @keyframes glitch {
-                0% {
-                    transform: scale(1);
-                    filter: grayscale(1) blur(1px);
-                }
+                @keyframes glitch {
+                    0% {
+                        transform: scale(1);
+                        filter: grayscale(1) blur(1px);
+                    }
 
-                20% {
-                    transform: scale(1.01) translateX(1px);
-                    filter: grayscale(1) blur(1px);
-                }
+                    20% {
+                        transform: scale(1.01) translateX(1px);
+                        filter: grayscale(1) blur(1px);
+                    }
 
-                40% {
-                    transform: scale(0.99) translateX(-1px);
-                    filter: grayscale(1) blur(1px) blur(2px);
-                }
+                    40% {
+                        transform: scale(0.99) translateX(-1px);
+                        filter: grayscale(1) blur(1px) blur(2px);
+                    }
 
-                60% {
-                    transform: scale(1.01) translateY(1px);
-                    filter: grayscale(1) blur(1px);
-                }
+                    60% {
+                        transform: scale(1.01) translateY(1px);
+                        filter: grayscale(1) blur(1px);
+                    }
 
-                80% {
-                    transform: scale(1) translateY(-1px);
-                    filter: grayscale(1) blur(1px);
-                }
+                    80% {
+                        transform: scale(1) translateY(-1px);
+                        filter: grayscale(1) blur(1px);
+                    }
 
-                100% {
-                    transform: scale(1);
-                    filter: grayscale(1) blur(1px);
+                    100% {
+                        transform: scale(1);
+                        filter: grayscale(1) blur(1px);
+                    }
                 }
             }
         }
@@ -77,10 +77,6 @@
         }
     }
 
-    >span {
-        margin: 0 auto;
-    }
-
     .pokemon-img {
         aspect-ratio: 1/1;
         position: relative;
@@ -88,6 +84,7 @@
         justify-content: center;
         flex: 1;
         min-height: 1px;
+        height: 100%;
 
         &:before {
             content: "";
@@ -161,9 +158,11 @@
         position: relative;
         z-index: 3;
         color: white;
-        margin: 10px auto;
+        padding: 10px 0;
         text-transform: uppercase;
-        font-size: 25px;
+        font-size: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .types {
@@ -172,6 +171,7 @@
         justify-content: center;
         gap: 10px;
         flex: 0;
+        width: 100%;
 
         .type {
             display: flex;
@@ -180,7 +180,9 @@
             gap: 5px;
             padding: 5px;
             position: relative;
-            padding: 5px 20px;
+            padding: 5px 0;
+            width: 100%;
+            max-width: 50%;
 
             &:before {
                 content: '';
@@ -219,10 +221,14 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, calc(100% + 50px - 50%));
     display: flex;
     gap: 10px;
     align-items: center;
+
+    @media (orientation: portrait) {
+        display: none;
+    }
 
     span {
         min-width: 100px;
@@ -260,9 +266,14 @@ app-search-bar {
     z-index: 1000;
     top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-100% - 20px));
     width: 100%;
     max-width: 350px;
     display: flex;
     justify-content: center;
+
+    @media (orientation: portrait) {
+        transform: translate(-50%, calc(50%));
+
+    }
 }

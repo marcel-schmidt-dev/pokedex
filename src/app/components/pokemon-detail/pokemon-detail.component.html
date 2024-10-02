@@ -75,7 +75,8 @@
             (click)="onDetailsButtonClick('description')"
             [class.active]="detailsActive === 'description'"
           >
-            Description
+            <span class="full-text">Description</span>
+            <span class="short-text">Desc.</span>
           </button>
           <button
             (click)="onDetailsButtonClick('moves')"
@@ -87,7 +88,8 @@
             (click)="onDetailsButtonClick('evolution')"
             [class.active]="detailsActive === 'evolution'"
           >
-            Evolution
+            <span class="full-text">Evolution</span>
+            <span class="short-text">Evo.</span>
           </button>
         </div>
       </div>
