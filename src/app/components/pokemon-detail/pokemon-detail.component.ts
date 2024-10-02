@@ -31,7 +31,10 @@ import { PokemonCryPlayerComponent } from '../pokemon-cry-player/pokemon-cry-pla
     PokemonCryPlayerComponent,
   ],
   templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.scss'],
+  styleUrls: [
+    './pokemon-detail.component.scss',
+    'pokemon-detail-data.component.scss',
+  ],
   encapsulation: ViewEncapsulation.None,
 })
 export class PokemonDetailComponent {
@@ -124,6 +127,4 @@ export class PokemonDetailComponent {
       this.currentIndex++;
     }
   }
-
-  
 }
