@@ -1,19 +1,44 @@
-# Pokédex
+# Pokedex App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+![Pokedex Banner](https://example.com/pokedex-banner.png)
 
-## Development server
+A simple and interactive Pokedex web application built with Angular. The Pokedex app allows users to search for Pokémon, view detailed information about each one, including evolutions, stats, and more.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Search for Pokémon by name or ID.
+- View detailed Pokémon stats, moves, and evolutions.
+- Audio player for Pokémon cries.
+- Fully responsive design.
+- Optimized performance using Angular's zone change detection and routing.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo
 
-## Build
+Check out the live demo: [Pokedex Live Demo](https://your-demo-link.com)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Screenshots
 
-## Further help
+![Pokedex Home](https://example.com/screenshot1.png)
+_Homepage with a list of Pokémon_
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![Pokemon Detail](https://example.com/screenshot2.png)
+_Detail page of a selected Pokémon with evolution and stats_
+
+## Installation
+
+Follow these instructions to get the project up and running on your local machine.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- [Angular CLI](https://angular.io/cli)
+
+### Steps
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/pokedex-app.git
+   ```

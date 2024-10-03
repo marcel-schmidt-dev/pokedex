@@ -1,5 +1,17 @@
 import { Component, Input, ElementRef, ViewChild, OnInit } from '@angular/core';
 
+/**
+ * @component PokemonCryPlayerComponent
+ * @description
+ * The `PokemonCryPlayerComponent` is responsible for playing Pokémon cries and visualizing the audio frequency data using an SVG element.
+ * It uses the Web Audio API to capture audio data and visualizes it in real-time with an SVG-based visualizer.
+ *
+ * @example
+ * <app-pokemon-cry-player [cries]="pokemonCries"></app-pokemon-cry-player>
+ *
+ * @export
+ * @class PokemonCryPlayerComponent
+ */
 @Component({
   selector: 'app-pokemon-cry-player',
   standalone: true,
@@ -8,15 +20,73 @@ import { Component, Input, ElementRef, ViewChild, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-cry-player.component.scss'],
 })
 export class PokemonCryPlayerComponent implements OnInit {
+  /**
+   * An object containing Pokémon cry URLs, keyed by Pokémon names.
+   *
+   * @type {{ [key: string]: string }}
+   * @memberof PokemonCryPlayerComponent
+   */
   @Input() cries?: { [key: string]: string };
+
+  /**
+   * Reference to the SVG element used for visualizing the audio frequency data.
+   *
+   * @type {ElementRef<SVGElement>}
+   * @memberof PokemonCryPlayerComponent
+   */
   @ViewChild('visualizer', { static: true }) svgRef!: ElementRef<SVGElement>;
 
+  /**
+   * The Web Audio API's AudioContext, which manages the audio pipeline.
+   *
+   * @type {AudioContext}
+   * @private
+   * @memberof PokemonCryPlayerComponent
+   */
   private audioContext!: AudioContext;
+
+  /**
+   * The AnalyserNode that provides real-time frequency data of the audio being played.
+   *
+   * @type {AnalyserNode}
+   * @private
+   * @memberof PokemonCryPlayerComponent
+   */
   private analyser!: AnalyserNode;
+
+  /**
+   * The HTML audio element that plays the Pokémon cry.
+   *
+   * @type {HTMLAudioElement | undefined}
+   * @private
+   * @memberof PokemonCryPlayerComponent
+   */
   private audio: HTMLAudioElement | undefined;
+
+  /**
+   * A typed array that holds the frequency data for the analyser node.
+   *
+   * @type {Uint8Array}
+   * @private
+   * @memberof PokemonCryPlayerComponent
+   */
   private dataArray!: Uint8Array;
+
+  /**
+   * The number of frequency bins in the analyser's frequency data.
+   *
+   * @type {number}
+   * @private
+   * @memberof PokemonCryPlayerComponent
+   */
   private bufferLength!: number;
 
+  /**
+   * Lifecycle hook that initializes the audio context, analyser node, and frequency data array.
+   * Sets up the environment for the audio visualizer.
+   *
+   * @memberof PokemonCryPlayerComponent
+   */
   ngOnInit(): void {
     this.audioContext = new AudioContext();
     this.analyser = this.audioContext.createAnalyser();
@@ -28,11 +98,17 @@ export class PokemonCryPlayerComponent implements OnInit {
     this.dataArray = new Uint8Array(this.bufferLength);
   }
 
+  /**
+   * Sets up the SVG visualizer by creating bars (rect elements) for each frequency bin.
+   * The visualizer reflects the audio frequency data in real time.
+   *
+   * @memberof PokemonCryPlayerComponent
+   * @returns {void}
+   */
   setupVisualizer(): void {
     const svg = this.svgRef.nativeElement;
     const barWidth = svg.clientWidth / this.bufferLength;
 
-    // Create rect elements for each frequency bin
     for (let i = 0; i < this.bufferLength; i++) {
       const rect = document.createElementNS(
         'http://www.w3.org/2000/svg',
@@ -50,6 +126,13 @@ export class PokemonCryPlayerComponent implements OnInit {
     this.drawVisualizer();
   }
 
+  /**
+   * Continuously updates the SVG visualizer with the current frequency data from the analyser node.
+   * This method runs in an animation loop to provide a real-time visualization of the audio.
+   *
+   * @memberof PokemonCryPlayerComponent
+   * @returns {void}
+   */
   drawVisualizer(): void {
     requestAnimationFrame(() => this.drawVisualizer());
 
@@ -71,6 +154,12 @@ export class PokemonCryPlayerComponent implements OnInit {
     });
   }
 
+  /**
+   * Plays the Pokémon cry audio if available. It sets up the audio context, analyser, and visualizer, and plays the audio.
+   *
+   * @memberof PokemonCryPlayerComponent
+   * @returns {void}
+   */
   playCry(): void {
     if (this.cries) {
       if (!this.audio || this.audio.paused) {
