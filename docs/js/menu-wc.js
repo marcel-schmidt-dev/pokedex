@@ -51,6 +51,75 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     </ul>
                 </li>
                     <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
+                            'data-bs-target="#xs-components-links"' }>
+                            <span class="icon ion-md-cog"></span>
+                            <span>Components</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
+                            <li class="link">
+                                <a href="components/AppComponent.html" data-type="entity-link" >AppComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/DetailDescriptionComponent.html" data-type="entity-link" >DetailDescriptionComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/DetailEvolutionComponent.html" data-type="entity-link" >DetailEvolutionComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/DetailMovesComponent.html" data-type="entity-link" >DetailMovesComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/DetailStatsComponent.html" data-type="entity-link" >DetailStatsComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/LoadingIndicatorComponent.html" data-type="entity-link" >LoadingIndicatorComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/PokemonCryPlayerComponent.html" data-type="entity-link" >PokemonCryPlayerComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/PokemonDetailComponent.html" data-type="entity-link" >PokemonDetailComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/PokemonListComponent.html" data-type="entity-link" >PokemonListComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/SearchBarComponent.html" data-type="entity-link" >SearchBarComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/TypeIconComponent.html" data-type="entity-link" >TypeIconComponent</a>
+                            </li>
+                        </ul>
+                    </li>
+                        <li class="chapter">
+                            <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#injectables-links"' :
+                                'data-bs-target="#xs-injectables-links"' }>
+                                <span class="icon ion-md-arrow-round-down"></span>
+                                <span>Injectables</span>
+                                <span class="icon ion-ios-arrow-down"></span>
+                            </div>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                                <li class="link">
+                                    <a href="injectables/PokemonService.html" data-type="entity-link" >PokemonService</a>
+                                </li>
+                            </ul>
+                        </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#miscellaneous-links"'
+                            : 'data-bs-target="#xs-miscellaneous-links"' }>
+                            <span class="icon ion-ios-cube"></span>
+                            <span>Miscellaneous</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
                         <a data-type="chapter-link" href="coverage.html"><span class="icon ion-ios-stats"></span>Documentation coverage</a>
                     </li>
                     <li class="divider"></li>

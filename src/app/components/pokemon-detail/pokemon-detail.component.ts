@@ -99,6 +99,15 @@ export class PokemonDetailComponent {
   constructor(public pokemonService: PokemonService) {}
 
   /**
+   * Lifecycle hook that sets the current index of the selected Pokémon based on its ID.
+   *
+   * @memberof PokemonDetailComponent
+   */
+  ngOnInit(): void {
+    this.currentIndex = this.pokemon.id;
+  }
+
+  /**
    * Handles the click event for the details button.
    * Sets the active details section based on the provided data type.
    *
@@ -190,12 +199,12 @@ export class PokemonDetailComponent {
    */
   changePokemon(direction: string): void {
     this.currentIndex = this.pokemonList.indexOf(this.pokemon);
-    if (direction === 'previous' && this.currentIndex > 0) {
+    if (direction === 'previous' && this.currentIndex >= 1) {
       this.pokemon = this.pokemonList[this.currentIndex - 1];
       this.currentIndex--;
     } else if (
       direction === 'next' &&
-      this.currentIndex < this.pokemonList.length - 1
+      this.currentIndex < this.pokemonList.length
     ) {
       this.pokemon = this.pokemonList[this.currentIndex + 1];
       this.currentIndex++;
