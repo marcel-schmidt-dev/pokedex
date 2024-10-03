@@ -39,7 +39,7 @@ export class PokemonService {
       hostName: 'pokeapi.co',
       versionPath: '/api/v2/',
       cache: true,
-      timeout: 5 * 1000,
+      timeout: 30 * 1000,
       cacheImages: true,
     });
   }
