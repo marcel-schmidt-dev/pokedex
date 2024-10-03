@@ -136,7 +136,3 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 If you have any questions or issues, feel free to contact us:
 
 - **Email**: contact@marcel-schmidt.dev
-
-```
-
-```
