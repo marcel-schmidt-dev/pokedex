@@ -15,13 +15,6 @@
   ></app-pokemon-list>
 
   <app-pokemon-detail
-    style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(100% - 200px);
-      height: calc(100vh - 200px);
-    "
     *ngIf="selectedPokemon"
     [pokemon]="selectedPokemon"
     [pokemonList]="pokemonList"

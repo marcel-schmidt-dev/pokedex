@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
+import { Flavor } from 'pokeapi-js-wrapper';
 
 @Component({
   selector: 'app-detail-description',
@@ -11,23 +12,25 @@ import { CommonModule } from '@angular/common';
 })
 export class DetailDescriptionComponent {
   @Input() pokemon!: string;
-  species: any;
   description!: any[];
 
   constructor(private pokemonService: PokemonService) {}
 
   async ngAfterViewInit() {
-    const descriptionRef = document.querySelector('.description');
+    const descriptionRef = document.querySelector('.description span');
     this.pokemonService
       .getPokemonSpecies(this.pokemon)
       .then((species) => {
-        this.species = species;
-        this.description = species.flavor_text_entries[0].flavor_text
-          .replace(/(\r\n|\n|\r|\f)/gm, ' ')
+        this.description = species.flavor_text_entries
+          .find(
+            (entry: Flavor) =>
+              entry['language'].name === 'en' && entry['version'].name === 'red'
+          )
+          .flavor_text.replace(/(\r\n|\n|\r|\f)/gm, ' ')
           .split(' ');
       })
       .then(async () => {
-        await this.delay(1000);
+        await this.delay(500);
         this.scrambleTextAnimation(this.description, descriptionRef);
       });
   }

@@ -38,60 +38,62 @@
           Weight: <span>{{ returnWeightInKg(pokemon.weight) }}</span>
         </div>
       </div>
-      <div class="data-box" [class.active]="detailsActive !== ''">
-        <div
-          class="close-data-box"
-          (click)="onCloseClick()"
-          *ngIf="detailsActive !== ''"
+    </div>
+  </div>
+  <div class="data-box-wrapper">
+    <div class="data-box" [class.active]="detailsActive !== ''">
+      <div
+        class="close-data-box"
+        (click)="onCloseClick()"
+        *ngIf="detailsActive !== ''"
+      >
+        X
+      </div>
+      <div class="content">
+        <app-detail-stats
+          *ngIf="detailsActive === 'stats'"
+          [stats]="pokemon.stats"
+        ></app-detail-stats>
+        <app-detail-description
+          *ngIf="detailsActive === 'description'"
+          [pokemon]="pokemon.name"
+        ></app-detail-description>
+        <app-detail-moves
+          *ngIf="detailsActive === 'moves'"
+          [moves]="this.getRedBlueMoves()"
+        ></app-detail-moves>
+        <app-detail-evolution
+          *ngIf="detailsActive === 'evolution'"
+          [pokemonName]="pokemon.name"
+        ></app-detail-evolution>
+      </div>
+      <div class="menu">
+        <button
+          (click)="onDetailsButtonClick('stats')"
+          [class.active]="detailsActive === 'stats'"
         >
-          X
-        </div>
-        <div class="content">
-          <app-detail-stats
-            *ngIf="detailsActive === 'stats'"
-            [stats]="pokemon.stats"
-          ></app-detail-stats>
-          <app-detail-description
-            *ngIf="detailsActive === 'description'"
-            [pokemon]="pokemon.name"
-          ></app-detail-description>
-          <app-detail-moves
-            *ngIf="detailsActive === 'moves'"
-            [moves]="this.getRedBlueMoves()"
-          ></app-detail-moves>
-          <app-detail-evolution
-            *ngIf="detailsActive === 'evolution'"
-            [pokemonName]="pokemon.name"
-          ></app-detail-evolution>
-        </div>
-        <div class="menu">
-          <button
-            (click)="onDetailsButtonClick('stats')"
-            [class.active]="detailsActive === 'stats'"
-          >
-            Stats
-          </button>
-          <button
-            (click)="onDetailsButtonClick('description')"
-            [class.active]="detailsActive === 'description'"
-          >
-            <span class="full-text">Description</span>
-            <span class="short-text">Desc.</span>
-          </button>
-          <button
-            (click)="onDetailsButtonClick('moves')"
-            [class.active]="detailsActive === 'moves'"
-          >
-            Moves
-          </button>
-          <button
-            (click)="onDetailsButtonClick('evolution')"
-            [class.active]="detailsActive === 'evolution'"
-          >
-            <span class="full-text">Evolution</span>
-            <span class="short-text">Evo.</span>
-          </button>
-        </div>
+          Stats
+        </button>
+        <button
+          (click)="onDetailsButtonClick('description')"
+          [class.active]="detailsActive === 'description'"
+        >
+          <span class="full-text">Description</span>
+          <span class="short-text">Desc</span>
+        </button>
+        <button
+          (click)="onDetailsButtonClick('moves')"
+          [class.active]="detailsActive === 'moves'"
+        >
+          Moves
+        </button>
+        <button
+          (click)="onDetailsButtonClick('evolution')"
+          [class.active]="detailsActive === 'evolution'"
+        >
+          <span class="full-text">Evolution</span>
+          <span class="short-text">Evo</span>
+        </button>
       </div>
     </div>
   </div>

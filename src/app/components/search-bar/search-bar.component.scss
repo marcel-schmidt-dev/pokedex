@@ -6,6 +6,7 @@
     width: 50px;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+    background-color: #000;
 
     &.active {
         width: 100%;

@@ -108,9 +108,9 @@ export class PokemonListComponent {
         this.pageSize = 4;
       } else if (width < 1150) {
         this.pageSize = 6;
-      } else if (width < 1300) {
-        this.pageSize = 8;
       } else if (width < 1550) {
+        this.pageSize = 8;
+      } else if (width < 1800) {
         this.pageSize = 10;
       } else {
         this.pageSize = 12;

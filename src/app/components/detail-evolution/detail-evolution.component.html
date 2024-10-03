@@ -12,9 +12,15 @@
       <span class="evolution-requirement" *ngIf="evolution.level_to_evolve">
         <span>&#64;lvl</span> {{ evolution.level_to_evolve }}
       </span>
-      <span class="evolution-requirement" *ngIf="evolution.stone">{{
+      <span class="evolution-requirement stone" *ngIf="evolution.stone">{{
         evolution.stone
       }}</span>
+      <span
+        class="evolution-requirement"
+        *ngIf="!evolution.stone && !evolution.level_to_evolve"
+      >
+        &nbsp;</span
+      >
     </div>
   </div>
 </div>
