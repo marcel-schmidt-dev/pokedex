@@ -104,7 +104,7 @@ export class PokemonDetailComponent {
    * @memberof PokemonDetailComponent
    */
   ngOnInit(): void {
-    this.currentIndex = this.pokemon.id;
+    this.currentIndex = this.pokemonList.indexOf(this.pokemon);
   }
 
   /**
@@ -198,16 +198,17 @@ export class PokemonDetailComponent {
    * changePokemon('next');     // Changes to the Pokémon at index 2
    */
   changePokemon(direction: string): void {
-    this.currentIndex = this.pokemonList.indexOf(this.pokemon);
-    if (direction === 'previous' && this.currentIndex >= 1) {
+    if (direction === 'previous' && this.currentIndex > 0) {
       this.pokemon = this.pokemonList[this.currentIndex - 1];
       this.currentIndex--;
+      console.log(this.currentIndex);
     } else if (
       direction === 'next' &&
       this.currentIndex < this.pokemonList.length
     ) {
       this.pokemon = this.pokemonList[this.currentIndex + 1];
       this.currentIndex++;
+      console.log(this.currentIndex);
     }
   }
 }

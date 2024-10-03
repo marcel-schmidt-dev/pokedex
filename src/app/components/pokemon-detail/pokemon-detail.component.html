@@ -98,14 +98,14 @@
     </div>
   </div>
   <button
-    [disabled]="currentIndex <= 1"
+    [disabled]="currentIndex <= 0"
     class="prev"
     (click)="changePokemon('previous')"
   >
     <
   </button>
   <button
-    [disabled]="currentIndex >= pokemonList!.length"
+    [disabled]="currentIndex >= pokemonList!.length - 1"
     class="next"
     (click)="changePokemon('next')"
   >
