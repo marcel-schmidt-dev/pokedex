@@ -74,7 +74,7 @@ Once the app is running, you can:
 
 Here's a brief overview of the project's folder structure:
 
-````bash
+```bash
 src/
 │
 ├── app/
@@ -87,6 +87,7 @@ src/
 ├── environments/           # Environment-specific configurations.
 ├── styles.scss             # Global styles for the application.
 └── index.html              # Entry point for the application.
+```
 
 ## Technologies Used
 
@@ -103,21 +104,21 @@ Contributions are welcome! Here's how you can get involved:
 
 2. Create a new branch for your feature or bugfix:
 
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
 
 3. Make your changes and commit them:
 
-    ```bash
-    git commit -m 'Add new feature'
-    ```
+   ```bash
+   git commit -m 'Add new feature'
+   ```
 
 4. Push your changes to your fork:
 
-    ```bash
-    git push origin feature/your-feature-name
-    ```
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 
 5. Submit a pull request to the main branch of the original repository.
 
@@ -135,4 +136,7 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 If you have any questions or issues, feel free to contact us:
 
 - **Email**: contact@marcel-schmidt.dev
-````
+
+```
+
+```
