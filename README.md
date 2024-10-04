@@ -4,7 +4,7 @@ A simple and interactive Pokedex web application built with Angular. The Pokedex
 
 ## Features
 
-- Search for Pokémon by name or ID.
+- Search for Pokémon by name.
 - View detailed Pokémon stats, moves, and evolutions.
 - Audio player for Pokémon cries.
 - Fully responsive design.
