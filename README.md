@@ -99,6 +99,7 @@ src/
 - **Chart.js**: For displaying Pokémon stats in a radar chart.
 - **PokeAPI**: External API used to fetch Pokémon data.
 - **SCSS**: Styling the components with modern CSS features.
+- [**PokeAPI-JS-Wrapper**](https://github.com/PokeAPI/pokeapi-js-wrapper)
 
 ## Contributing
 
