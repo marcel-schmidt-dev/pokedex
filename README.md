@@ -16,7 +16,7 @@ Check out the live demo: [Pokedex Live Demo](https://jarvis-dex.netlify.app)
 
 ## Documentation
 
-Check out the [Documentration](marcel-schmidt-dev.github.io/pokedex)
+Check out the [Documentation](marcel-schmidt-dev.github.io/pokedex)
 
 ## Screenshots
 
