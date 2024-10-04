@@ -201,14 +201,12 @@ export class PokemonDetailComponent {
     if (direction === 'previous' && this.currentIndex > 0) {
       this.pokemon = this.pokemonList[this.currentIndex - 1];
       this.currentIndex--;
-      console.log(this.currentIndex);
     } else if (
       direction === 'next' &&
       this.currentIndex < this.pokemonList.length
     ) {
       this.pokemon = this.pokemonList[this.currentIndex + 1];
       this.currentIndex++;
-      console.log(this.currentIndex);
     }
   }
 }
