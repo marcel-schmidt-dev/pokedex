@@ -14,6 +14,10 @@ A simple and interactive Pokedex web application built with Angular. The Pokedex
 
 Check out the live demo: [Pokedex Live Demo](https://jarvis-dex.netlify.app)
 
+## Documentation
+
+Check out the [Documentration](marcel-schmidt-dev.github.io/pokedex)
+
 ## Screenshots
 
 ![Pokedex Home](./screenshots/list.png)
