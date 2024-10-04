@@ -4,7 +4,7 @@ A simple and interactive Pokedex web application built with Angular. The Pokedex
 
 ## Features
 
-- Search for Pokémon by name or ID.
+- Search for Pokémon by name.
 - View detailed Pokémon stats, moves, and evolutions.
 - Audio player for Pokémon cries.
 - Fully responsive design.
@@ -13,6 +13,10 @@ A simple and interactive Pokedex web application built with Angular. The Pokedex
 ## Demo
 
 Check out the live demo: [Pokedex Live Demo](https://jarvis-dex.netlify.app)
+
+## Documentation
+
+Check out the [Documentation](https://marcel-schmidt-dev.github.io/pokedex)
 
 ## Screenshots
 
@@ -95,6 +99,7 @@ src/
 - **Chart.js**: For displaying Pokémon stats in a radar chart.
 - **PokeAPI**: External API used to fetch Pokémon data.
 - **SCSS**: Styling the components with modern CSS features.
+- [**PokeAPI-JS-Wrapper**](https://github.com/PokeAPI/pokeapi-js-wrapper)
 
 ## Contributing
 
